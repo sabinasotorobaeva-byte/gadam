@@ -1,66 +1,149 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QADAM — Твой путь к знаниям</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f7f8fc;
-      color: #14213d;
-    }
-    header {
-      padding: 25px 8%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: white;
-    }
-    .logo { font-size: 28px; font-weight: bold; color: #14213d; }
-    .hero {
-      text-align: center;
-      padding: 100px 20px;
-      background: #14213d;
-      color: white;
-    }
-    .hero h1 { font-size: 48px; }
-    .hero p { font-size: 19px; color: #d8deeb; }
-    .button {
-      display: inline-block;
-      margin-top: 25px;
-      padding: 15px 30px;
-      background: #d6b46a;
-      color: #14213d;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
-    }
-    section { padding: 55px 8%; text-align: center; }
-    footer { padding: 25px; text-align: center; background: #14213d; color: white; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QADAM — Your Future Starts Here</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#101d35;--gold:#c7a66a;--cream:#f7f5f0}
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--navy);background:var(--cream)}
+header{height:82px;background:white;display:flex;align-items:center;justify-content:space-between;padding:0 7%;position:sticky;top:0;z-index:10;box-shadow:0 2px 15px #00000008}
+.logo{font-family:'Playfair Display';font-size:32px;font-weight:bold;letter-spacing:3px}
+.logo span{color:var(--gold)}
+nav{display:flex;gap:30px}
+nav a{color:var(--navy);text-decoration:none;font-size:13px;font-weight:600}
+nav a:hover{color:var(--gold)}
+.hero{min-height:650px;background:linear-gradient(90deg,#101d35ed,#101d3570),url('https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=2000&q=85') center/cover;display:flex;align-items:center;padding:90px 10%;color:white}
+.hero-content{max-width:720px}
+.eyebrow{color:#e0c58f;letter-spacing:4px;font-size:12px;font-weight:bold}
+h1{font-family:'Playfair Display';font-size:clamp(45px,7vw,78px);line-height:1.12;margin:28px 0}
+.hero p{font-size:17px;line-height:1.9;color:#e0e5ed;max-width:560px}
+.btn{display:inline-block;background:var(--gold);color:#101d35;text-decoration:none;padding:17px 30px;margin-top:32px;font-size:13px;font-weight:bold;transition:.3s}
+.btn:hover{background:white;transform:translateY(-3px)}
+.section{padding:95px 8%}
+.center{text-align:center}
+.tag{color:#a8894e;font-size:11px;letter-spacing:4px;font-weight:bold}
+h2{font-family:'Playfair Display';font-size:clamp(32px,5vw,48px);margin:18px 0}
+.intro{color:#737d8d;line-height:1.8;max-width:650px;margin:0 auto}
+.countries{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px;margin-top:50px}
+.country{height:390px;position:relative;overflow:hidden;color:white;text-decoration:none}
+.country img{width:100%;height:100%;object-fit:cover;transition:.7s}
+.country:hover img{transform:scale(1.09)}
+.country:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 30%,#081426e8)}
+.country-info{position:absolute;bottom:27px;left:25px;z-index:2}
+.country-info small{color:#e2c78e;letter-spacing:3px}
+.country-info h3{font-family:'Playfair Display';font-size:31px;margin-top:8px}
+.country-info p{font-size:12px;margin-top:8px;color:#e0e5ed}
+.features{background:#101d35;color:white}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:35px;margin-top:50px}
+.feature{padding:30px;border-top:1px solid #c7a66a}
+.feature .num{font-family:'Playfair Display';font-size:36px;color:var(--gold)}
+.feature h3{font-family:'Playfair Display';font-size:24px;margin:20px 0}
+.feature p{color:#b7c0cf;line-height:1.8;font-size:14px}
+.quote{background:#eae5da;padding:100px 12%;text-align:center}
+.quote p{font-family:'Playfair Display';font-size:clamp(25px,4vw,42px);line-height:1.5}
+footer{background:#0b1528;color:white;padding:50px 8%;display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap}
+footer p{color:#aab4c3;font-size:12px;margin-top:12px}
+@media(max-width:650px){header{padding:0 5%;height:70px}nav{gap:12px}nav a{font-size:10px}.logo{font-size:25px}.hero{min-height:570px;padding:70px 7%}.section{padding:70px 6%}.country{height:340px}footer{flex-direction:column}}
+</style>
 </head>
 <body>
-  <header>
-    <div class="logo">QADAM.</div>
-    <div>Образование без границ</div>
-  </header>
 
-  <main>
-    <div class="hero">
-      <h1>Твой следующий шаг начинается здесь.</h1>
-      <p>Учись. Развивайся. Поступай в университет мечты.</p>
-      <a href="#about" class="button">Начать путь</a>
-    </div>
+<header>
+<div class="logo">QA<span>D</span>AM.</div>
+<nav>
+<a href="#about">О нас</a>
+<a href="#countries">Страны</a>
+<a href="#opportunities">Возможности</a>
+</nav>
+</header>
 
-    <section id="about">
-      <h2>Добро пожаловать в QADAM</h2>
-      <p>Образовательная платформа, которая помогает ученикам открывать новые возможности.</p>
-    </section>
-  </main>
+<main>
+<section class="hero" id="about">
+<div class="hero-content">
+<div class="eyebrow">EDUCATION · OPPORTUNITY · FUTURE</div>
+<h1>Твоё будущее не имеет границ.</h1>
+<p>Открывай университеты мира, исследуй образовательные возможности и делай уверенные шаги к своей мечте вместе с QADAM.</p>
+<a href="#countries" class="btn">ИССЛЕДОВАТЬ МИР →</a>
+</div>
+</section>
 
-  <footer>© 2026 QADAM. Все права защищены.</footer>
+<section class="section center" id="countries">
+<div class="tag">EXPLORE THE WORLD</div>
+<h2>Мир возможностей</h2>
+<p class="intro">Открой для себя страны, университеты и новые направления образования. Твой следующий шаг может изменить будущее.</p>
+
+<div class="countries">
+<a class="country" href="#opportunities">
+<img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=900&q=85" alt="Горы и природа Кыргызстана">
+<div class="country-info"><small>01 · CENTRAL ASIA</small><h3>Кыргызстан</h3><p>Начни свой путь здесь</p></div>
+</a>
+
+<a class="country" href="#opportunities">
+<img src="https://images.unsplash.com/photo-1565426873118-a17ed65d74b9?auto=format&fit=crop&w=900&q=85" alt="Будапешт">
+<div class="country-info"><small>02 · EUROPE</small><h3>Венгрия</h3><p>Европейское образование</p></div>
+</a>
+
+<a class="country" href="#opportunities">
+<img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=900&q=85" alt="Лондон">
+<div class="country-info"><small>03 · EUROPE</small><h3>Великобритания</h3><p>История и академические традиции</p></div>
+</a>
+
+<a class="country" href="#opportunities">
+<img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=900&q=85" alt="Нью-Йорк">
+<div class="country-info"><small>04 · NORTH AMERICA</small><h3>США</h3><p>Новые горизонты</p></div>
+</a>
+
+<a class="country" href="#opportunities">
+<img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=900&q=85" alt="Германия">
+<div class="country-info"><small>05 · EUROPE</small><h3>Германия</h3><p>Наука и исследования</p></div>
+</a>
+
+<a class="country" href="#opportunities">
+<img src="https://images.unsplash.com/photo-1538485399081-7c897b8f3b15?auto=format&fit=crop&w=900&q=85" alt="Южная Корея">
+<div class="country-info"><small>06 · ASIA</small><h3>Южная Корея</h3><p>Технологии и инновации</p></div>
+</a>
+</div>
+</section>
+
+<section class="section features" id="opportunities">
+<div class="center">
+<div class="tag">YOUR JOURNEY</div>
+<h2>Три шага к большему</h2>
+<p class="intro">QADAM помогает превратить большие цели в конкретные действия.</p>
+</div>
+<div class="feature-grid">
+<div class="feature">
+<div class="num">01</div>
+<h3>Учись</h3>
+<p>Изучай предметы, развивай навыки и готовься к экзаменам.</p>
+</div>
+<div class="feature">
+<div class="num">02</div>
+<h3>Исследуй</h3>
+<p>Сравнивай университеты, программы и требования к поступлению.</p>
+</div>
+<div class="feature">
+<div class="num">03</div>
+<h3>Действуй</h3>
+<p>Узнавай о стипендиях, грантах и международных возможностях.</p>
+</div>
+</div>
+</section>
+
+<section class="quote">
+<div class="tag">QADAM PHILOSOPHY</div>
+<p>«Каждая большая история начинается с одного маленького шага».</p>
+</section>
+</main>
+
+<footer>
+<div><div class="logo">QA<span>D</span>AM.</div><p>Образование без границ.</p></div>
+<div><p>© 2026 QADAM. Все права защищены.</p><p>Создано для будущего поколения.</p></div>
+</footer>
 </body>
-</html>
+  </html>
+
