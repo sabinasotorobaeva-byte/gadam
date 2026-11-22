@@ -1,1 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Университеты мира — QADAM</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f7f5f0;color:#17243b;font-family:Arial,sans-serif}
+header{background:#101d35;padding:20px 7%;display:flex;justify-content:space-between;align-items:center;color:white}
+.logo{font-size:25px;letter-spacing:3px;color:#d5b779;font-weight:bold}
+header a{color:white;text-decoration:none}
+.hero{padding:65px 8%;background:linear-gradient(110deg,#101d35,#30486b);color:white}
+h1{font-size:clamp(36px,6vw,60px);margin:0 0 15px}
+.hero p{line-height:1.7;max-width:650px}
+main{padding:40px 7%}
+.filters{display:grid;grid-template-columns:2fr 1fr;gap:12px;margin:20px 0 35px}
+input,select{padding:15px;border:1px solid #ddd;border-radius:8px;font-size:15px;width:100%}
+.country{margin:35px 0}
+.country h2{font-size:28px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.card{background:white;padding:23px;border-radius:12px;border:1px solid #e8e5de;display:flex;flex-direction:column;gap:12px}
+.card h3{margin:0;font-size:19px}
+.short{color:#98743d;font-weight:bold}
+.details{color:#657084;font-size:14px;line-height:1.6}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{background:#f1eee7;padding:6px 9px;border-radius:5px;font-size:12px}
+.card a{color:#98743d;font-weight:bold;text-decoration:none;margin-top:auto}
+.empty{padding:30px;text-align:center}
+footer{background:#101d35;color:white;padding:28px;text-align:center;margin-top:50px}
+@media(max-width:600px){.filters{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
 
+<header>
+<div class="logo">QADAM</div>
+<a href="index.html">← На главную</a>
+</header>
+
+<div class="hero">
+<h1>Университеты мира</h1>
+<p>Находи университеты, изучай специальности и сравнивай образовательные возможности разных стран.</p>
+</div>
+
+<main>
+<h2>Каталог университетов</h2>
+
+<div class="filters">
+<input id="search" type="search" placeholder="Поиск университета или специальности">
+<select id="country">
+<option value="all">Все страны</option>
+</select>
+</div>
+
+<div id="catalog">Загрузка каталога...</div>
+</main>
+
+<footer>QADAM — твой путь к международному образованию</footer>
+
+<script src="./data.js"></script>
+
+<script>
+(function(){
+const catalog=document.getElementById("catalog");
+const search=document.getElementById("search");
+const countrySelect=document.getElementById("country");
+
+if(typeof QADAM_DATA==="undefined"){
+catalog.textContent="Ошибка: не удалось загрузить data.js. Проверь название файла и его расположение.";
+return;
+}
+
+if(!QADAM_DATA.countries){
+catalog.textContent="Ошибка: в базе данных отсутствует список стран.";
+return;
+}
+
+QADAM_DATA.countries.forEach(country=>{
+const option=document.createElement("option");
+option.value=country.id;
+option.textContent=country.name;
+countrySelect.appendChild(option);
+});
+
+function render(){
+catalog.innerHTML="";
+let count=0;
+const query=search.value.toLowerCase().trim();
+
+QADAM_DATA.countries.forEach(country=>{
+if(countrySelect.value!=="all"&&countrySelect.value!==country.id)return;
+
+const universities=(country.universities||[]).filter(u=>{
+const text=[
+u.name,u.shortName,u.city,u.country,
+...(u.fields||[]),...(u.funding||[])
+].join(" ").toLowerCase();
+return text.includes(query);
+});
+
+if(!universities.length)return;
+count+=universities.length;
+
+const section=document.createElement("section");
+section.className="country";
+
+const heading=document.createElement("h2");
+heading.textContent=country.name;
+
+const cards=document.createElement("div");
+cards.className="cards";
+
+universities.forEach(u=>{
+const card=document.createElement("article");
+card.className="card";
+
+const title=document.createElement("h3");
+title.textContent=u.name;
+
+const short=document.createElement("div");
+short.className="short";
+short.textContent=u.shortName||"Университет";
+
+const details=document.createElement("div");
+details.className="details";
+details.textContent="📍 "+(u.city||"Город не указан")+" · "+(u.country||country.name);
+
+const tags=document.createElement("div");
+tags.className="tags";
+
+(u.fields||[]).forEach(field=>{
+const tag=document.createElement("span");
+tag.className="tag";
+tag.textContent=field;
+tags.appendChild(tag);
+});
+
+const funding=document.createElement("div");
+funding.className="details";
+funding.textContent="Финансирование: "+(u.funding||["Информация уточняется"]).join(", ");
+
+const link=document.createElement("a");
+link.href=u.website||"#";
+link.target="_blank";
+link.rel="noopener noreferrer";
+link.textContent="Официальный сайт →";
+
+card.append(title,short,details,tags,funding,link);
+cards.appendChild(card);
+});
+
+section.append(heading,cards);
+catalog.appendChild(section);
+});
+
+if(count===0){
+catalog.innerHTML='<div class="empty">Университеты не найдены.</div>';
+}
+}
+
+search.addEventListener("input",render);
+countrySelect.addEventListener("change",render);
+render();
+})();
+</script>
+
+</body>
+</html>
