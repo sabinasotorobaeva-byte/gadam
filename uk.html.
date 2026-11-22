@@ -1,1 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Великобритания — QADAM</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f7f5f0;color:#17243b;font-family:'DM Sans',sans-serif}
+header{padding:22px 7%;background:#101d35;color:white;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:25px;font-weight:bold;letter-spacing:3px;color:#d5b779}
+header a{text-decoration:none}
+.hero{min-height:430px;padding:100px 8%;color:white;background:linear-gradient(90deg,#101d35dd,#101d3540),url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1800&q=85') center/cover}
+h1,h2{font-family:'Playfair Display',serif}
+h1{font-size:clamp(40px,7vw,70px);max-width:700px;margin:0 0 20px}
+.hero p{font-size:18px;max-width:600px;line-height:1.7}
+section{padding:65px 8%}
+h2{font-size:34px}
+.intro{max-width:800px;line-height:1.8;color:#536074}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px}
+.card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 5px 22px #101d3510}
+.card img{width:100%;height:175px;object-fit:cover}
+.card div{padding:22px}
+.card h3{margin-top:0}
+.card p{color:#647084;line-height:1.6}
+.card a,.official{color:#98743d;font-weight:bold}
+.steps{line-height:2;color:#536074}
+footer{background:#101d35;color:white;padding:30px 8%;text-align:center}
+@media(max-width:600px){header{padding:18px 5%}.hero{padding:75px 7%}section{padding:45px 7%}}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">QADAM</div>
+<a href="index.html">← На главную</a>
+</header>
 
+<div class="hero">
+<h1>Твоё образование в Великобритании</h1>
+<p>Ведущие университеты, международные возможности и академические программы мирового уровня.</p>
+</div>
+
+<section>
+<h2>Почему Великобритания?</h2>
+<p class="intro">Великобритания предлагает программы бакалавриата, магистратуры и докторантуры. Обучение ведётся преимущественно на английском языке. Для иностранных студентов доступны отдельные стипендии и программы финансовой поддержки, но условия зависят от университета и уровня обучения.</p>
+</section>
+
+<section>
+<h2>Известные университеты</h2>
+<div class="cards">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1580492516014-4f9e4c9f8b3b?auto=format&fit=crop&w=800&q=80">
+<div><h3>Оксфордский университет</h3><p>Один из старейших университетов мира с сильными научными и медицинскими направлениями.</p><a href="https://www.ox.ac.uk/" target="_blank">Официальный сайт →</a></div>
+</div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80">
+<div><h3>Кембриджский университет</h3><p>Известен исследованиями, медициной, естественными и гуманитарными науками.</p><a href="https://www.cam.ac.uk/" target="_blank">Официальный сайт →</a></div>
+</div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1519457431-44ccd64a579b?auto=format&fit=crop&w=800&q=80">
+<div><h3>Университетский колледж Лондона (UCL)</h3><p>Крупный исследовательский университет с медицинскими и научными программами.</p><a href="https://www.ucl.ac.uk/" target="_blank">Официальный сайт →</a></div>
+</div>
+</div>
+</section>
+
+<section>
+<h2>Стипендии и финансовая поддержка</h2>
+<p class="intro">Иностранные абитуриенты могут искать университетские стипендии, гранты и внешние программы финансирования. Например, Oxford и Cambridge публикуют собственные варианты поддержки. Важно проверять, доступны ли они студентам из Кыргызстана и покрывают ли обучение полностью.</p>
+<p><a class="official" href="https://www.ox.ac.uk/admissions/undergraduate/fees-and-funding" target="_blank">Финансирование Oxford →</a></p>
+<p><a class="official" href="https://www.undergraduate.study.cam.ac.uk/fees-and-finance" target="_blank">Финансирование Cambridge →</a></p>
+</section>
+
+<section>
+<h2>Как поступить?</h2>
+<div class="steps">
+1. Выбрать университет и специальность.<br>
+2. Проверить требования к аттестату и предметам.<br>
+3. Подготовить подтверждение английского языка, если требуется.<br>
+4. Подать заявку через соответствующую систему поступления.<br>
+5. Проверить сроки, стоимость и доступные стипендии.
+</div>
+</section>
+
+<footer>QADAM — твой путь к международному образованию</footer>
+</body>
+</html>
