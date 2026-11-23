@@ -1,1 +1,71 @@
 
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Университеты — QADAM</title>
+<style>
+body{margin:0;background:#f4f5f7;color:#17243a;font-family:Arial,sans-serif}
+header{background:#10213d;color:white;padding:35px 7%}
+header a{color:#d9bd7b;text-decoration:none}
+h1{font-family:Georgia,serif}
+main{max-width:1000px;margin:35px auto;padding:0 18px}
+input,select{padding:14px;border:1px solid #ccc;border-radius:7px;margin:5px}
+input{width:55%;max-width:400px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:20px}
+.card{background:white;padding:22px;border-radius:10px;border:1px solid #ddd}
+.card h2{font-family:Georgia,serif;font-size:20px}
+.card p{color:#596579;line-height:1.5}
+.card a{color:#9a752d;font-weight:bold}
+</style>
+</head>
+<body>
+<header>
+<a href="index.html">QADAM</a>
+<h1>Университеты мира</h1>
+<p>Найди университет для своего будущего</p>
+</header>
+<main>
+<input id="search" placeholder="Поиск университета">
+<select id="country">
+<option value="all">Все страны</option>
+<option value="Кыргызстан">Кыргызстан</option>
+<option value="Венгрия">Венгрия</option>
+<option value="Великобритания">Великобритания</option>
+</select>
+<p id="count"></p>
+<div class="grid" id="list"></div>
+</main>
+<script>
+const universities=[
+["КРСУ","Кыргызстан","Бишкек","Медицина, инженерия","https://www.krsu.edu.kg/"],
+["КНУ","Кыргызстан","Бишкек","Науки, экономика","https://www.knu.kg/"],
+["КГМА","Кыргызстан","Бишкек","Лечебное дело, стоматология","https://kgma.kg/"],
+["University of Szeged","Венгрия","Сегед","Медицина, фармация","https://u-szeged.hu/"],
+["Semmelweis University","Венгрия","Будапешт","Медицина, стоматология","https://semmelweis.hu/english/"],
+["University of Pécs","Венгрия","Печ","Медицина, науки","https://international.pte.hu/"],
+["University of Oxford","Великобритания","Оксфорд","Медицина, биология","https://www.ox.ac.uk/"],
+["University of Cambridge","Великобритания","Кембридж","Медицина, химия","https://www.cam.ac.uk/"],
+["University College London","Великобритания","Лондон","Медицина, биомедицина","https://www.ucl.ac.uk/"]
+];
+function render(){
+const q=document.getElementById("search").value.toLowerCase();
+const c=document.getElementById("country").value;
+const found=universities.filter(u=>u.join(" ").toLowerCase().includes(q)&&(c==="all"||u[1]===c));
+document.getElementById("count").textContent="Найдено университетов: "+found.length;
+document.getElementById("list").innerHTML=found.map(u=>`
+<div class="card">
+<h2>${u[0]}</h2>
+<p>${u[2]} · ${u[1]}</p>
+<p>Направления: ${u[3]}</p>
+<a href="${u[4]}" target="_blank" rel="noopener">Официальный сайт ↗</a>
+</div>`).join("");
+}
+document.getElementById("search").addEventListener("input",render);
+document.getElementById("country").addEventListener("change",render);
+render();
+</script>
+</body>
+</html>
+
